@@ -1,0 +1,39 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+{% comment %} <span class="mt-2"></span> {% endcomment %}
+{% if data %}
+{% for da in data %}
+<div class="jumbotron border rounded col-sm-12 mt-2 p-4 position-relative justify-content-center" id="{{da.id}}">
+    
+    <h1 class="display-4 fw-bold fs-3">{{da.title}}</h1>
+    <div class="d-flex">
+        <p class="text-black align-content-center me-2">{{da.full_name}} /</p>
+        <p class="fs-6">{{da.date}}</p>
+    </div>
+    <hr class="mb-2 mt-0">
+    {% if pid %}
+        {% if da.id == pid %}
+            <p class="lead text-white bg-success  p-2 overflow-hidden fw-bold  mt-3" >{{da.summ|capfirst}}</p>
+        {% else %}
+            <p class="lead text-black overflow-hidden fw-medium mt-3" style="height:18vh" >{{da.desc|capfirst}}</p>
+        {% endif %}
+    {% else %}
+        <p class="lead text-black overflow-hidden fw-medium" style="height:18vh" >{{da.desc}}</p>  
+    {% endif %}  
+        <div class="d-flex justify-content-between">
+        <a href="{% url "expandpost" da.id %}" class="btn btn-outline-danger">Expand</a>
+        <a href="{% url "summarize" da.id %}#{{da.id}}" class="btn btn-danger">Summarize <i class="ri-magic-line"></i></a>
+        </div>
+</div>
+{% comment %} <hr class="text-black mt-2 mb-2"> {% endcomment %}
+{% endfor %}
+{% else %}
+<h1 class="text-black">No Result Found</h1>
+{% endif %}
+{% endblock content %}
+
+
+
+
+

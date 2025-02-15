@@ -1,0 +1,34 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+
+{% comment %} <div class="col-sm-10">
+    <h3 class="text-white my-5 fs-3">Dashboard \ Add Post</h3>
+</div> {% endcomment %}
+<div class="jumbotron border rounded col-sm-12 mb-3 mt-5 p-4 position-relative justify-content-center"> 
+    <div class="d-flex justify-content-between">
+        <a href="{% url "dashboard" %}" class="me-2"><i class="backicon ri-arrow-left-line btn btn-light rounded-circle fs-4"></i></a>  
+        <span class="fs-4" style="color:#2A3C42;">Create Post</span>
+        <span></span>
+    </div>  
+    {% if messages %}
+    {% for mes in messages %}
+    <p {% if mes.tags %} class="alert alert-{{mes.tags}} my-5" {% endif %} >{{mes}}</p>
+    {% endfor %}
+    {% endif %}
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {% for fm in form %}
+            <div class="form-group">
+                {{fm}} <small class="text-warning">{{fm.errors|striptags }}</small>
+            </div>
+        {% endfor %}
+        <input type="submit" class="btn btn-primary fw-medium mt-3" style="width:80px;" value="Submit">
+    </form>
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+        <p class="form-error alert alert-danger my-3">{{ error }}</p>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock content %}

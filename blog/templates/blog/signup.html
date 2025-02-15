@@ -1,0 +1,45 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}  
+    {% if messages %}
+    {% for mes in messages %}
+    <p {% if mes.tags %} class="alert alert-{{mes.tags}} my-5" {% endif %} >{{mes}}</p>
+    {% endfor %}
+    {% endif %}
+    <form method="post" novalidate>
+        {% csrf_token %}
+
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+    <p class="form-error alert alert-danger my-3">{{ error }}</p>
+    {% endfor %}
+    {% endif %}
+        <section class="vh-50 mt-2">
+            <div class="container py-5 h-100">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                  <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center ">
+          
+                      <h3 class="toph fs-1 fw-bolder" style="letter-spacing:2px;">SIGN UP</h3>
+                      <hr>
+                        {% for fm in form %}
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                {{fm}} <small class="text-danger">{{fm.errors|striptags }}</small>
+                            </div>
+                        {% endfor %}
+          
+                      <input data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block" type="submit"></input>
+          
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    </form>
+</div>
+{% endblock content %}
+
+
+

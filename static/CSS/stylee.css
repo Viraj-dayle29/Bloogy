@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Reddit+Mono:wght@200..900&display=swap');
+
+
+body{
+    background: #77A1D3; 
+background: -webkit-linear-gradient(to left, #E684AE, #79CBCA, #77A1D3); 
+background: linear-gradient(to left, #E684AE, #79CBCA, #77A1D3); 
+
+font-family: "Reddit Mono", monospace;
+}
+.errorlist{
+display: None;
+}
+
+
+.jumbotron{
+    background-color: white;
+}
+
+.nav-link.active, .titleline{
+    padding-bottom: 2px;
+    border-bottom: 2px solid #00FFFF;
+}
+.postform{
+    display: block;
+    overflow: hidden;
+    resize: none;
+}
+.postform:focus{
+    box-shadow: none;
+}
+
+.backicon{
+    background-color: #DEE9F3;
+} 
+
+.searchform{
+    width: 300px;
+}
+
+.searchform::placeholder {
+    color: black;
+    opacity: 1; /* Firefox */
+}
+
+.searchform:focus{
+    box-shadow: none;
+}
+.menus:hover{
+    background-color: #034694;
+    cursor: pointer;
+}
+.menus:active{
+    background-color: #002D62;
+}
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+

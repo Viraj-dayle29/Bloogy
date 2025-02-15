@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="jumbotron border rounded col-sm-12 mt-5 mb-3 p-4 position-relative justify-content-center">
+    <div class="d-flex mb-2 justify-content-between">
+        <a href="{% url "home" %}#{{data.id}}"><i class="backicon ri-arrow-left-line btn btn-light rounded-circle fs-4 me-2"></i></a>
+        <span class="fs-5 align-content-center fw-bold"><span class="fw-bold" style="color:	#daa520"><i class="ri-bard-fill"> </i>Author</span> <i class="ri-at-line"></i><span>{{data.username}}</span></span>
+    </div>
+    <h1 class="display-4 fw-bold fs-1">{{data.title}}</h1>
+    <div class="d-flex">
+        <p class="text-black align-content-center me-2">{{data.full_name|capfirst}} /</p>
+        <p class="fs-6">{{data.date}}</p>
+    </div>
+    <hr class="mb-2 mt-0">
+    <p class="lead alert alert-success  p-3 fw-bold  mt-3">Summary : {{data.summ|capfirst}}</p>
+    {% for line in para %}
+        <p class="lead text-black fw-medium mt-3">{{line}}</p>
+    {% endfor %}
+    {% comment %} <div class="container d-flex justify-content-between">
+        <a href="#" class="btn btn-outline-secondary">Expand</a>
+        <p class="text-black fs-5 text-decoration-underline">By - {{da.full_name}}</p>
+    </div>   {% endcomment %}
+</div>
+{% endblock content%}

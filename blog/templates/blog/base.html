@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloggy</title>
+    <link rel="stylesheet" href="{% static 'blog\CSS\all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog\CSS\bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS\stylee.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container-fluid bg-dark">
+        {% include 'blog/navbar.html' %}
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                {% block msg %}
+                {% endblock msg %}      
+            </div>
+        </div>
+        <div class="row">
+            {% block side %}
+            {% endblock side %}
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </div>
+
+    <script src="{% static 'blog\JS\all.min.js' %}"></script>
+    <script src="{% static 'blog\JS\bootstrap.min.js' %}"></script>
+    <script src="{% static 'blog\JS\jQuery.js' %}"></script>
+    <script src="{% static 'blog\JS\popper.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+            // Function to resize textarea
+            function resizeTextarea() {
+                // Set the textarea height based on its content
+                $(this).css('height', 'auto').css('height', this.scrollHeight + 'px');
+            }
+        
+            // Call resizeTextarea() when the textarea is typed in
+            $('textarea').on('input', resizeTextarea);
+        
+            // Call resizeTextarea() when the page loads
+            $('textarea').each(resizeTextarea);
+        });
+    </script>
+</body>
+</html> 
